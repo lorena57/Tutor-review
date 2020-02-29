@@ -10,25 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_28_020426) do
+ActiveRecord::Schema.define(version: 2020_02_29_050531) do
 
   create_table "appointments", force: :cascade do |t|
     t.datetime "appointment_info"
-    t.integer "student_id"
-    t.integer "tutor_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.integer "student_id", null: false
+    t.integer "tutor_id", null: false
     t.index ["student_id"], name: "index_appointments_on_student_id"
     t.index ["tutor_id"], name: "index_appointments_on_tutor_id"
   end
 
   create_table "reviews", force: :cascade do |t|
     t.string "title"
-    t.string "content"
-    t.integer "student_id"
-    t.integer "appointment_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.string "review"
+    t.integer "student_id", null: false
+    t.integer "appointment_id", null: false
     t.index ["appointment_id"], name: "index_reviews_on_appointment_id"
     t.index ["student_id"], name: "index_reviews_on_student_id"
   end
@@ -36,16 +32,12 @@ ActiveRecord::Schema.define(version: 2020_02_28_020426) do
   create_table "students", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "tutors", force: :cascade do |t|
     t.string "name"
-    t.string "years_exp"
+    t.integer "years_exp"
     t.string "SME"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "appointments", "students"

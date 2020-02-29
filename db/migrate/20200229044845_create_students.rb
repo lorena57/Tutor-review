@@ -3,8 +3,6 @@ class CreateStudents < ActiveRecord::Migration[6.0]
     create_table :students do |t|
       t.string :username
       t.string :password_digest
-
-      t.timestamps
     end
   end
 end
