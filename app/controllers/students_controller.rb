@@ -15,7 +15,7 @@ class StudentsController < ApplicationController
     end
 
     def show
-        @student = Student.find_by_if(params[:id])
+        @student = Student.find_by_id(params[:id])
     end
 
     private
