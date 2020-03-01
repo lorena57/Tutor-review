@@ -6,4 +6,5 @@ class Appointment < ApplicationRecord
     has_many :reviews
     has_many :students, through: :reviews #students who reviewed it
 
+    accepts_nested_attributes_for :tutor
 end

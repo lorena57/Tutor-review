@@ -1,0 +1,24 @@
+<h1>Create an appointment</h1>
+
+<%= form_for (@appointment)  do |f|%>
+
+      <%= f.label :appointment_info %> 
+      <%= f.date_select :appointment_info, {order: [:month, :day, :year], prompt: { day: 'Select day', month: 'Select month', year: 'Select year' }, start_year: Date.today.year, end_year: Date.today.year + 5}, {required: true} %> 
+
+    <p>Select a Subject</p>
+<div>
+
+<%= f.collection_select :tutor_id, Tutor.all, :id, :SME%>
+</div>
+
+<p>Create a new Subject</p>
+
+<div>
+<%= f.fields_for :tutor do |t| %>
+<%= t.label :Subject%>
+<%= t.text_field :SME %>
+ <% end %>
+</div>
+
+<%= f.submit %>
+      <% end %>
